@@ -142,6 +142,9 @@ legend { font-weight: 600; font-size: .85rem; color: var(--muted); text-transfor
 .prefix-table { display: flex; flex-wrap: wrap; gap: 6px; }
 .prefix-table span { background: var(--bg); border: 1px solid var(--line); border-radius: 8px; padding: 3px 10px; }
 .prefix-table b { color: var(--accent-dark); margin-right: 4px; }
+.tips .h-sm + .prefix-table { margin-top: 8px; }
+.tips .prefix-table + .h-sm { margin-top: 18px; }
+.tips p.small { font-size: .9rem; margin: 2px 0 8px; }
 
 /* ---------- Quiz ---------- */
 .quiz-top { display: flex; align-items: center; gap: 14px; margin-bottom: 14px; flex-wrap: wrap; }

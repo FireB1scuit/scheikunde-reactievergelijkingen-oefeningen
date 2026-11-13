@@ -167,7 +167,7 @@ const NONMETAL_WEIGHT = 4;   // vragen met alleen niet-metalen komen zo veel vak
 
 /* ---------- Naamgeving ---------- */
 
-const PREFIXES = ["", "mono", "di", "tri", "tetra", "penta", "hexa", "hepta", "octa", "nona", "deca"];
+const PREFIXES = ["", "mono", "di", "tri", "tetra", "penta", "hexa"];
 
 /* naam van het element als eerste deel van de naam */
 const FIRST_NAME = {
@@ -177,13 +177,13 @@ const FIRST_NAME = {
 /* naam van het element als tweede deel (uitgang -ide) */
 const SECOND_NAME = {
   O: "oxide", S: "sulfide", Cl: "chloride", F: "fluoride", Br: "bromide",
-  I: "jodide", N: "nitride", P: "fosfide", Se: "selenide"
+  I: "jodide"
 };
 
 /* Moleculaire stoffen uit twee niet-metalen */
 const MOLECULAR = [
-  "CO","CO2","SO2","SO3","NO","NO2","N2O","N2O3","N2O4","N2O5","P2O5","P4O10","P4O6",
-  "CS2","CCl4","CBr4","PCl3","PCl5","SF6","Cl2O","Cl2O7","ClO2","SiO2","SiF4","SiCl4",
+  "CO","CO2","SO2","SO3","NO","NO2","N2O","N2O3","N2O4","N2O5","P2O5","P4O6",
+  "CS2","CCl4","CBr4","PCl3","PCl5","SF6","Cl2O","ClO2","SiO2","SiF4","SiCl4",
   "BF3","B2O3","NCl3","NF3","NI3","SCl2","S2Cl2","XeF4","IF5","OF2","P4S3","SeO2"
 ];
 

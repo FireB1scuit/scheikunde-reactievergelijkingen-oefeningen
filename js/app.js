@@ -152,7 +152,7 @@
     const el1 = ELEMENT_BY_SYMBOL[m.e1].name, el2 = ELEMENT_BY_SYMBOL[m.e2].name;
     const steps = [];
     if (dir === "f2n") {
-      steps.push(`${fHTML(f)} bestaat uit twee niet-metalen: een <b>moleculaire stof</b>. Je geeft het aantal atomen aan met telwoorden (mono, di, tri, tetra, penta, hexa, hepta, octa, nona, deca).`);
+      steps.push(`${fHTML(f)} bestaat uit twee niet-metalen: een <b>moleculaire stof</b>. Je geeft het aantal atomen aan met telwoorden (mono, di, tri, tetra, penta, hexa).`);
       steps.push(m.n1 > 1
         ? `Eerste element: <b>${m.e1}</b> = ${el1}, ${m.n1} atomen → <i>${PREFIXES[m.n1]}</i> + ${FIRST_NAME[m.e1]} = <b>${m.first}</b>.`
         : `Eerste element: <b>${m.e1}</b> = ${el1}, 1 atoom → bij het eerste element laat je <i>mono</i> weg → <b>${m.first}</b>.`);
@@ -205,7 +205,7 @@
     if (kind === "f2n") {
       prompt = cat === "el" ? `Wat is de naam van het element <span class="formula big">${fHTML(f)}</span>?`
         : `Geef de naam van de stof <span class="formula big">${fHTML(f)}</span>.`;
-      if (cat === "mol") hint = "Gebruik telwoorden: mono, di, tri, tetra, penta, hexa, hepta, octa, nona, deca.";
+      if (cat === "mol") hint = "Gebruik telwoorden: mono, di, tri, tetra, penta, hexa.";
     } else {
       prompt = cat === "el" ? `Wat is het symbool van het element <b class="big">${esc(names[0])}</b>?`
         : `Geef de formule van <b class="big">${esc(names[0])}</b>.`;
@@ -222,7 +222,7 @@
   function namingPool(cats, dirs) {
     const ids = [];
     dirs.forEach(d => {
-      if (cats.includes("mol")) MOLECULAR.forEach(f => ids.push(`${d}:mol:${f}`));
+      if (cats.includes("mol")) MOLECULAR.filter(f => SECOND_NAME[f.match(/([A-Z][a-z]?)\d*$/)[1]]).forEach(f => ids.push(`${d}:mol:${f}`));
       if (cats.includes("el")) COMMON_ELEMENTS.forEach(s => ids.push(`${d}:el:${s}`));
       if (cats.includes("di")) DIATOMIC.forEach(s => ids.push(`${d}:di:${s}`));
       if (cats.includes("tr")) TRIVIAL.forEach(t => ids.push(`${d}:tr:${t.f}`));
@@ -382,6 +382,16 @@
         <h2 class="h-sm">Telwoorden</h2>
         <div class="prefix-table">
           ${PREFIXES.slice(1).map((p, i) => `<span><b>${i + 1}</b> ${p}</span>`).join("")}
+        </div>
+        <h2 class="h-sm">Komen nooit alleen voor (twee-atomig)</h2>
+        <p class="muted small">Als element schrijf je deze altijd met een 2.</p>
+        <div class="prefix-table">
+          ${DIATOMIC.map(s => `<span><b>${fHTML(s + "2")}</b> ${ELEMENT_BY_SYMBOL[s].name}</span>`).join("")}
+        </div>
+        <h2 class="h-sm">Andere naam aan het eind (-ide)</h2>
+        <p class="muted small">Staat dit element als tweede in de naam, dan krijgt het een andere naam.</p>
+        <div class="prefix-table">
+          ${Object.entries(SECOND_NAME).map(([s, n]) => `<span><b>${s}</b> ${ELEMENT_BY_SYMBOL[s].name} → ${n}</span>`).join("")}
         </div>
       </section>`;
 
